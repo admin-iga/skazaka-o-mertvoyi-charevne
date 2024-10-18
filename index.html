@@ -124,13 +124,14 @@
         <div class="section">
             <h2>О сказке</h2>
             <p>«Сказка о мёртвой царевне и семи богатырях» — произведение Александра Сергеевича Пушкина, наполненное волшебством, верностью и добротой. В этой сказке молодая царевна сталкивается с завистью и злом, но её судьбу меняет помощь семи богатырей, живущих в лесу. Это история о силе добра и настоящей любви.</p>
-            <p>В центре сюжета — мачеха-царица, которая из зависти приказывает убить царевну, но та чудом спасается и находит приют у добрых богатырей. В конце, любовь и верность царевича Елисея возвращают царевну к жизни.</p>
+            <p>Повествование начинается с того, как молодой царь отправляется на войну, оставив свою любимую жену-царевну на попечение своей матери. Но через некоторое время царица умирает, и вскоре отец женится снова, на новой царице, которая оказывается завистливой и злой. Мачеха узнаёт от волшебного зеркала, что её падчерица — самая красивая на свете. Она решает избавиться от неё, приказав верному слуге отвезти её в лес и убить.</p>
+            <p>Но слуга не смог выполнить приказ и отпустил девушку, а она нашла приют у семи добрых богатырей. Однако мачеха, узнав, что царевна жива, решила отравить её с помощью отравленного яблока. И только верность и любовь Елисея спасают царевну, когда он находит её и возвращает к жизни.</p>
         </div>
 
         <div class="section">
             <h2>О постановке</h2>
-            <p>Постановка сказки пройдет в школе, 4-Н классе. Юные актеры с воодушевлением подготовили эту волшебную историю. Каждая деталь — от костюмов до декораций — создана с любовью, чтобы передать атмосферу русской сказки. Ученики много репетировали, и мы приглашаем всех насладиться их трудом.</p>
-            <p>Постановка обещает быть незабываемой благодаря музыке, декорациям и стараниям юных актеров, которые делают всё возможное, чтобы погрузить зрителей в мир Пушкина.</p>
+            <p>Постановка сказки пройдет в школе №1517, 4-Н классе. Юные актеры с воодушевлением подготовили эту волшебную историю. Каждая деталь — от костюмов до декораций — создана с любовью, чтобы передать атмосферу русской сказки. Ученики много репетировали, и мы приглашаем всех насладиться их трудом.</p>
+            <p>В постановке будет использована оригинальная музыка и традиционные костюмы, что позволит зрителям полностью окунуться в атмосферу русских народных сказок. Ученики 4-Н класса вложили много сил и стараний, чтобы эта сказка ожила на сцене. Это будет незабываемый вечер, наполненный магией и волшебством!</p>
         </div>
     </div>
 
@@ -166,7 +167,7 @@
     </div>
 
     <footer>
-        &copy; 2024 Постановка сказки о мёртвой царевне, Школа, 4-Н класс
+        &copy; 2024 IGA-PRO
     </footer>
 
     <script>
@@ -182,7 +183,7 @@
                 localStorage.setItem('username', username);
                 localStorage.setItem('password', password);
                 error.style.display = 'none';
-                showLoginForm();
+                showLogin(); // Перейти на страницу входа после регистрации
             }
         }
 
@@ -194,16 +195,23 @@
             const storedPassword = localStorage.getItem('password');
             const error = document.getElementById('login-error');
 
+            if (username === 'admin' && password === 'admin') {
+                window.location.href = 'https://igat.tilda.ws/skazka-o-mertvoyi-charevne';
+                return;
+            }
+
             if (username === storedUsername && password === storedPassword) {
                 error.style.display = 'none';
                 showContent(username);
+                localStorage.setItem('loggedIn', true); // Устанавливаем флаг, что пользователь вошел
             } else {
                 error.style.display = 'block';
             }
         }
 
-        // Показ контента
+        // Показ основного контента после входа
         function showContent(username) {
+            document.getElementById('choice-container').style.display = 'none';
             document.getElementById('login-form').style.display = 'none';
             document.getElementById('welcome-message').style.display = 'block';
             document.getElementById('username-display').textContent = username;
@@ -212,14 +220,15 @@
 
         // Функция выхода
         function logout() {
+            localStorage.removeItem('loggedIn'); // Убираем флаг при выходе
             document.getElementById('welcome-message').style.display = 'none';
             showChoice();
-            document.getElementById('main-content').style.display = 'none';
         }
 
-        // Показ выбора между регистрацией и входом
+        // Показ выбора входа или регистрации
         function showChoice() {
             document.getElementById('choice-container').style.display = 'block';
+            document.getElementById('main-content').style.display = 'none';
             document.getElementById('registration-form').style.display = 'none';
             document.getElementById('login-form').style.display = 'none';
         }
@@ -233,13 +242,17 @@
         // Показ формы входа
         function showLogin() {
             document.getElementById('choice-container').style.display = 'none';
+            document.getElementById('registration-form').style.display = 'none';
             document.getElementById('login-form').style.display = 'block';
         }
 
-        // Проверка, если пользователь уже вошел
+        // Проверка, если пользователь уже зарегистрирован
         window.onload = function() {
             const storedUsername = localStorage.getItem('username');
-            if (storedUsername) {
+            const isLoggedIn = localStorage.getItem('loggedIn');
+            if (isLoggedIn && storedUsername) {
+                showContent(storedUsername);
+            } else if (storedUsername) {
                 showLogin();
             } else {
                 showChoice();
