@@ -6,43 +6,45 @@
     <title>Постановка сказки о мёртвой царевне</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f9;
         }
 
         header {
-            background-color: #8b0000;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
             color: white;
             padding: 20px;
             text-align: center;
-        }
-
-        h1 {
-            margin: 0;
+            font-size: 2rem;
         }
 
         .content {
             padding: 20px;
+            display: none;
         }
 
         .section {
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .section h2 {
-            color: #8b0000;
+            color: #2575fc;
         }
 
         .form-container {
             max-width: 400px;
-            margin: 0 auto;
+            margin: 100px auto;
             padding: 20px;
             background-color: white;
-            border: 1px solid #ddd;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: none;
         }
 
         .form-container input {
@@ -54,17 +56,18 @@
         }
 
         .form-container button {
-            background-color: #8b0000;
+            background-color: #2575fc;
             color: white;
             border: none;
             padding: 10px;
             cursor: pointer;
             width: 100%;
             border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
 
         .form-container button:hover {
-            background-color: #a52a2a;
+            background-color: #1a60d4;
         }
 
         .error {
@@ -74,10 +77,10 @@
         }
 
         footer {
-            background-color: #8b0000;
+            background-color: #6a11cb;
             color: white;
             text-align: center;
-            padding: 10px;
+            padding: 20px;
             position: fixed;
             bottom: 0;
             width: 100%;
@@ -85,45 +88,48 @@
     </style>
 </head>
 <body>
+
     <header>
-        <h1>Постановка сказки о мёртвой царевне</h1>
+        Постановка сказки о мёртвой царевне<br>Школа, 4-Н класс
     </header>
 
-    <div class="content">
+    <div class="content" id="main-content">
         <div class="section">
             <h2>О сказке</h2>
-            <p>Сказка о мёртвой царевне — это классическое произведение Александра Пушкина. В ней рассказывается о прекрасной царевне, завистливой мачехе и чудесном спасении при помощи семи богатырей.</p>
+            <p>«Сказка о мёртвой царевне и семи богатырях» — произведение Александра Сергеевича Пушкина, наполненное волшебством, верностью и добротой. В этой сказке молодая царевна сталкивается с завистью и злом, но её судьбу меняет помощь семи богатырей, живущих в лесу. Это история о силе добра и настоящей любви.</p>
+            <p>В центре сюжета — мачеха-царица, которая из зависти приказывает убить царевну, но та чудом спасается и находит приют у добрых богатырей. В конце, любовь и верность царевича Елисея возвращают царевну к жизни.</p>
         </div>
 
         <div class="section">
             <h2>О постановке</h2>
-            <p>Постановка этой сказки в театре оживляет волшебную атмосферу русских народных сказок. В спектакле задействованы современные технологии, музыка и костюмы, что позволяет зрителям погружаться в сказочный мир Пушкина.</p>
-        </div>
-
-        <div id="registration-form" class="form-container">
-            <h2>Регистрация</h2>
-            <div class="error" id="registration-error">Пожалуйста, заполните все поля!</div>
-            <input type="text" id="register-username" placeholder="Имя пользователя">
-            <input type="password" id="register-password" placeholder="Пароль">
-            <button onclick="register()">Зарегистрироваться</button>
-        </div>
-
-        <div id="login-form" class="form-container" style="display: none;">
-            <h2>Вход</h2>
-            <div class="error" id="login-error">Неправильное имя пользователя или пароль!</div>
-            <input type="text" id="login-username" placeholder="Имя пользователя">
-            <input type="password" id="login-password" placeholder="Пароль">
-            <button onclick="login()">Войти</button>
-        </div>
-
-        <div id="welcome-message" class="form-container" style="display: none;">
-            <h2>Добро пожаловать, <span id="username-display"></span>!</h2>
-            <button onclick="logout()">Выйти</button>
+            <p>Постановка сказки пройдет в школе, 4-Н классе. Юные актеры с воодушевлением подготовили эту волшебную историю. Каждая деталь — от костюмов до декораций — создана с любовью, чтобы передать атмосферу русской сказки. Ученики много репетировали, и мы приглашаем всех насладиться их трудом.</p>
+            <p>Постановка обещает быть незабываемой благодаря музыке, декорациям и стараниям юных актеров, которые делают всё возможное, чтобы погрузить зрителей в мир Пушкина.</p>
         </div>
     </div>
 
+    <div id="registration-form" class="form-container">
+        <h2>Регистрация</h2>
+        <div class="error" id="registration-error">Пожалуйста, заполните все поля!</div>
+        <input type="text" id="register-username" placeholder="Имя пользователя">
+        <input type="password" id="register-password" placeholder="Пароль">
+        <button onclick="register()">Зарегистрироваться</button>
+    </div>
+
+    <div id="login-form" class="form-container">
+        <h2>Вход</h2>
+        <div class="error" id="login-error">Неправильное имя пользователя или пароль!</div>
+        <input type="text" id="login-username" placeholder="Имя пользователя">
+        <input type="password" id="login-password" placeholder="Пароль">
+        <button onclick="login()">Войти</button>
+    </div>
+
+    <div id="welcome-message" class="form-container">
+        <h2>Добро пожаловать, <span id="username-display"></span>!</h2>
+        <button onclick="logout()">Выйти</button>
+    </div>
+
     <footer>
-        <p>&copy; 2024 Постановка сказки о мёртвой царевне</p>
+        &copy; 2024 Постановка сказки о мёртвой царевне, Школа, 4-Н класс
     </footer>
 
     <script>
@@ -153,10 +159,25 @@
 
             if (username === storedUsername && password === storedPassword) {
                 error.style.display = 'none';
-                showWelcomeMessage(username);
+                showContent(username);
             } else {
                 error.style.display = 'block';
             }
+        }
+
+        // Показ контента
+        function showContent(username) {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('welcome-message').style.display = 'block';
+            document.getElementById('username-display').textContent = username;
+            document.getElementById('main-content').style.display = 'block';
+        }
+
+        // Функция выхода
+        function logout() {
+            document.getElementById('welcome-message').style.display = 'none';
+            showLoginForm();
+            document.getElementById('main-content').style.display = 'none';
         }
 
         // Показ формы входа
@@ -165,24 +186,13 @@
             document.getElementById('login-form').style.display = 'block';
         }
 
-        // Показ приветственного сообщения
-        function showWelcomeMessage(username) {
-            document.getElementById('login-form').style.display = 'none';
-            document.getElementById('welcome-message').style.display = 'block';
-            document.getElementById('username-display').textContent = username;
-        }
-
-        // Функция выхода
-        function logout() {
-            document.getElementById('welcome-message').style.display = 'none';
-            showLoginForm();
-        }
-
         // Проверка, если пользователь уже зарегистрирован
         window.onload = function() {
             const storedUsername = localStorage.getItem('username');
             if (storedUsername) {
                 showLoginForm();
+            } else {
+                document.getElementById('registration-form').style.display = 'block';
             }
         };
     </script>
