@@ -232,4 +232,19 @@
 
         // Показ формы входа
         function showLogin() {
-            document.getElementById('choice-container
+            document.getElementById('choice-container').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+        }
+
+        // Проверка, если пользователь уже вошел
+        window.onload = function() {
+            const storedUsername = localStorage.getItem('username');
+            if (storedUsername) {
+                showLogin();
+            } else {
+                showChoice();
+            }
+        }
+    </script>
+</body>
+</html>
